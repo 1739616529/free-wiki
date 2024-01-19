@@ -1,0 +1,7 @@
+$test-color: red;
+
+@mixin bg-image($name) {
+    background-image: url("/img/" + $name + ".png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

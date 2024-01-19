@@ -1,0 +1,27 @@
+@use "./module/font.scss" as *;
+@use "ant-design-vue/dist/reset.css" as *;
+
+body {
+    font-family: "Ping Fang SC";
+}
+
+.cup {
+    cursor: pointer;
+}
+
+.color-range-success {
+    color: #3f88e2;
+}
+.color-range-error {
+    color: #e04218;
+}
+
+.select-text-1 {
+    width: 60px;
+}
+.select-text-2 {
+    width: 75px;
+}
+.select-text-5 {
+    width: 115px;
+}
