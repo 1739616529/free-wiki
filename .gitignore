@@ -28,3 +28,4 @@ types/*.dev.*
 vue3-temp-*.tgz
 /target
 db
+go.work.sum
