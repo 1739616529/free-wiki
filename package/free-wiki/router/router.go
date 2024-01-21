@@ -1,10 +1,14 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"free-wiki/controller"
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/mvc"
+)
 
-func CreateRouter() *gin.Engine {
-	r := gin.Default()
+func CreateRouter(app *iris.Application) {
+	api := app.Party("/api")
 
-	CreateCatalogRouter(r)
-	return r
+	mvc.New(api.Party("/catalog")).Handle(new(controller.CatalogController))
+
 }

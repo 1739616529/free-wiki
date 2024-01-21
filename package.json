@@ -13,6 +13,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@biomejs/biome": "1.5.2",
         "@stylistic/eslint-plugin-js": "^1.5.3",
         "@types/fs-extra": "^11.0.4",
         "@types/node": "^20.11.0",

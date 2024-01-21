@@ -1,10 +1,19 @@
 package main
 
 import (
+	"fmt"
+	"free-wiki/config"
 	"free-wiki/router"
+	"github.com/go-playground/validator/v10"
+	"github.com/kataras/iris/v12"
 )
 
 func main() {
-	r := router.CreateRouter()
-	r.Run("127.0.0.1:7001")
+	app := iris.New()
+
+	app.Validator = validator.New()
+
+	router.CreateRouter(app)
+
+	app.Listen(fmt.Sprintf(":%s", config.Config.Port))
 }

@@ -1,24 +1,22 @@
 package controller
 
 import (
-	"free-wiki/model"
-	"free-wiki/util"
-	"github.com/gin-gonic/gin"
+	"fmt"
+	"free-wiki/dto"
+	"free-wiki/service"
+	"github.com/kataras/iris/v12"
 )
 
 type CatalogController struct {
-	modelUser model.CatalogModel
+	/* dependencies */
+	Ctx            iris.Context
+	CatalogService service.CatalogService
 }
 
-func New() *CatalogController {
-	return &CatalogController{
-		modelUser: model.CatalogModel{},
-	}
-}
+func (s *CatalogController) PostQuery() string {
 
-func (r *CatalogController) Query(c *gin.Context) {
-	PostData := util.PostJsonToMap[int64](c)
-	catalog, _ := r.modelUser.FindById(PostData["id"])
-
-	c.JSON(util.ResponseJSON(catalog))
+	var query dto.QueryCatalogDTO
+	err := s.Ctx.ReadJSON(&query)
+	fmt.Println(err)
+	return s.CatalogService.Query()
 }

@@ -17,6 +17,12 @@ type BaseConfig struct {
 
 	/* db文件存储位置 */
 	DbPath string
+
+	/* 工作 环境 */
+	WorkEnv string
+
+	/* 工作 目录 */
+	WorkDir string
 }
 
 var Config BaseConfig
@@ -40,15 +46,19 @@ func init() {
 	if workEnv == "" {
 		workEnv = "local"
 	}
-
 	dbPath := filepath.Join(workDir, fmt.Sprintf("%s.db", workEnv))
 
 	port := os.Getenv("FREE_WIKI_WORK_PORT")
+	if port == "" {
+		port = "7001"
+	}
 
 	fmt.Println("Executable path:", dbPath)
 	Config = BaseConfig{
 		Port:         port,
 		FreeWikiPath: workDir,
 		DbPath:       dbPath,
+		WorkEnv:      workDir,
+		WorkDir:      workDir,
 	}
 }
