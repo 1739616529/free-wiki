@@ -13,3 +13,7 @@ type CatalogEntity struct {
 func (e CatalogEntity) TableName() string {
 	return "catalog"
 }
+
+func init() {
+	db.SyncEntity(CatalogEntity{})
+}

@@ -1,22 +1,24 @@
 package controller
 
 import (
-	"fmt"
 	"free-wiki/dto"
+	"free-wiki/entity"
 	"free-wiki/service"
 	"github.com/kataras/iris/v12"
 )
 
 type CatalogController struct {
 	/* dependencies */
-	Ctx            iris.Context
-	CatalogService service.CatalogService
+	Ctx iris.Context
+	//CatalogService service.CatalogService
 }
 
-func (s *CatalogController) PostQuery() string {
+type Test struct {
+	Id string `json:"id"`
+}
 
-	var query dto.QueryCatalogDTO
-	err := s.Ctx.ReadJSON(&query)
-	fmt.Println(err)
-	return s.CatalogService.Query()
+func (s *CatalogController) PostQuery(query dto.QueryCatalogDTO) []entity.CatalogEntity {
+
+	catalogService := service.CatalogService{}
+	return catalogService.QueryCatalog(&query)
 }
