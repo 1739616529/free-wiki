@@ -9,10 +9,9 @@ import (
 type CatalogService struct {
 }
 
-func (r *CatalogService) QueryCatalog(query *dto.QueryCatalogDTO) []entity.CatalogEntity {
+func (r *CatalogService) QueryCatalog(query *dto.QueryCatalogDTO) (catalogList []entity.CatalogEntity, err error) {
 
-	var catalogList []entity.CatalogEntity
-	db.Engine.Where("id = ?, pre = ?", query.Id, query.Pre).Query(&catalogList)
+	_, err = db.Engine.Where("id = ?, pre = ?", query.Id, query.Pre).Query(&catalogList)
 
-	return catalogList
+	return
 }

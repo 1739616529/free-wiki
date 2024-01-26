@@ -29,6 +29,7 @@ var Config BaseConfig
 
 func init() {
 
+	var err error
 	/* 工作目录 */
 	workDir := os.Getenv("FREE_WIKI_WORK_DIR")
 	if workDir == "" {
@@ -39,7 +40,10 @@ func init() {
 		}
 	}
 	workDir = filepath.Join(workDir, "FREE_WIKI")
-	util.EnsureDir(workDir)
+	err = util.EnsureDir(workDir)
+	if err != nil {
+		panic("init FREE_WIKI error")
+	}
 
 	/* 工作环境 */
 	workEnv := os.Getenv("FREE_WIKI_WORK_ENV")

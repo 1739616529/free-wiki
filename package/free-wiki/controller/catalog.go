@@ -20,5 +20,7 @@ type Test struct {
 func (s *CatalogController) PostQuery(query dto.QueryCatalogDTO) []entity.CatalogEntity {
 
 	catalogService := service.CatalogService{}
-	return catalogService.QueryCatalog(&query)
+
+	catalogList, _ := catalogService.QueryCatalog(&query)
+	return catalogList
 }
